@@ -7,12 +7,9 @@ const PokemonItem = ({ item }: { item: Pokemon }) => {
     const { isInView } = useIntersectionObserver(ref)
 
     return (
-        <section
-            ref={ref}
-            className={`${item.id % 2 === 0 ? 'bg-green-50' : 'bg-white'} shadow-md   p-sm grid gap-sm`}
-        >
+        <section ref={ref} className={` shadow-md   p-sm `}>
             {isInView && (
-                <div>
+                <div className="grid gap-sm">
                     <img
                         src={item.imageUrl}
                         alt=""

@@ -31,7 +31,7 @@ const SuggestionBox = ({
     }, [ref, searchText, setSearchBoxOpen, setSearchText])
 
     return (
-        <section className="absolute left-0 top-[9vh] sm:top-[11vh]  w-full">
+        <section className="absolute left-0 top-[9vh] sm:top-[10vh]  w-full">
             <ContentLayout>
                 {!loading && results.length > 0 && (
                     <div
@@ -56,7 +56,7 @@ const SuggestionBox = ({
                     <div className="text-center bg-white">Loading...</div>
                 )}
                 {!loading && results.length === 0 && (
-                    <div className="text-center bg-white">
+                    <div className="text-center py-md bg-white">
                         No results found!
                     </div>
                 )}
