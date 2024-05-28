@@ -30,15 +30,15 @@ const SearchBoxMobile = ({
         <div className="search">
             <CiSearch
                 fontSize={25}
-                className="cursor-pointer md:hidden search"
+                className="cursor-pointer  md:hidden search"
                 onClick={() => setSearchBoxOpen(true)}
             />
             {searchBoxOpen && (
                 <section className="absolute md:hidden  search p-xs left-0 top-0 w-full bg-white">
                     <div className=" px-1 flex search items-center  border-sm border-gray-300  rounded-sm">
                         <LiaTimesSolid
-                            fontSize={20}
-                            className="cursor-pointer"
+                            fontSize={25}
+                            className="cursor-pointer text-gray-500"
                             onClick={() => {
                                 setSearchBoxOpen(false)
                                 setText('')
@@ -68,7 +68,7 @@ const SearchBoxDesktop = ({
 }) => {
     const { searchText } = useGlobalContext()
     return (
-        <div className="border-sm search hidden md:block">
+        <div className="border-sm border-gray-400 rounded-md search hidden md:block">
             <Input text={text} setText={setText} />
             {searchText && <SearchSuggestions />}
         </div>

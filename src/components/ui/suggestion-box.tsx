@@ -36,14 +36,14 @@ const SuggestionBox = ({
                 {!loading && results.length > 0 && (
                     <div
                         ref={ref}
-                        className=" p-2 border-sm search bg-gray-100 border-gray-200 mx-auto grid gap-2"
+                        className=" p-2 border-sm search bg-white max-w-3xl border-gray-200 mx-auto grid gap-2"
                     >
                         {results.map((item) => {
                             return (
                                 <a
                                     key={item.name}
                                     href={item.name}
-                                    className="font-semibold  hover:text-green-600"
+                                    className="font-bold capitalize hover:text-green-700"
                                     onClick={() => setSearchText('')}
                                 >
                                     {item.name}

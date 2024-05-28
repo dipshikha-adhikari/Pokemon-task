@@ -19,14 +19,14 @@ const PokemonList = () => {
     }, [offset])
 
     return (
-        <section className="grid gap-md ">
+        <section className="grid gap-md py-md">
             <div className="grid gap-md grid-cols-[repeat(auto-fit,minmax(220px,1fr))]">
                 {lists.length > 0 ? (
                     lists?.map((item: Pokemon) => (
                         <PokemonItem key={item.id} item={item} />
                     ))
                 ) : (
-                    <div className="h-[90vh] grid gap-md grid-cols-[repeat(auto-fit,minmax(200px,1fr))] overflow-hidden py-sm ">
+                    <div className="h-[90vh] grid gap-md grid-cols-[repeat(auto-fit,minmax(220px,1fr))] overflow-hidden py-sm ">
                         {skeletons.map((s, ind) => {
                             return <Skeleton key={ind} />
                         })}

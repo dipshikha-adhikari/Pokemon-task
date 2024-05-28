@@ -18,19 +18,19 @@ const Input = ({
     }, [debouncedText])
 
     return (
-        <div className="flex relative search items-center">
+        <div className="flex relative px-sm search items-center">
             <input
                 type="text"
                 placeholder="Search"
                 name=""
                 id=""
                 value={text}
-                className="p-xs outline-none  search w-full"
+                className="p-xs h-full outline-none  search w-full"
                 onChange={(e) => setText(e.target.value)}
             />{' '}
             <CiSearch
-                fontSize={20}
-                className="cursor-pointer search  "
+                fontSize={25}
+                className="cursor-pointer  font-bold search  "
                 onClick={() => setSearchBoxOpen(true)}
             />
         </div>

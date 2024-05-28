@@ -7,15 +7,17 @@ const PokemonItem = ({ item }: { item: Pokemon }) => {
     const { isInView } = useIntersectionObserver(ref)
 
     return (
-        <section ref={ref} className="shadow-md p-sm grid gap-sm">
-            {isInView && <img src={item.imageUrl} alt="" />}
-            <p className="font-bold">{item.name}</p>
+        <section ref={ref} className="shadow-md  p-sm grid gap-sm">
+            {isInView && (
+                <img src={item.imageUrl} alt="" className="min-w-20 min-h-24" />
+            )}
+            <p className="font-bold capitalize text-xl">{item.name}</p>
             <div className="flex gap-sm">
                 {item?.types?.map((type) => {
                     return (
                         <span
                             key={type}
-                            className="bg-gray-200 p-xs rounded-sm"
+                            className="bg-green-100 capitalize  px-xs p-1 rounded-sm"
                         >
                             {type}
                         </span>
