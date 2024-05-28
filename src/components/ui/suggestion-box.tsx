@@ -31,7 +31,7 @@ const SuggestionBox = ({
     }, [ref, searchText, setSearchBoxOpen, setSearchText])
 
     return (
-        <section className="absolute left-0 top-[11vh] sm:top-[10vh]  w-full">
+        <section className="absolute left-0 top-[9vh] sm:top-[11vh]  w-full">
             <ContentLayout>
                 {!loading && results.length > 0 && (
                     <div
