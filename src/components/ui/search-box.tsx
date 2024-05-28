@@ -1,50 +1,76 @@
-import { CiSearch } from "react-icons/ci";
-import { useGlobalContext } from "../../context/app-context";
-import { LiaTimesSolid } from "react-icons/lia";
-import Input from "./input";
+import { CiSearch } from 'react-icons/ci'
+import { LiaTimesSolid } from 'react-icons/lia'
+import { useGlobalContext } from '../../context/app-context'
+import Input from './input'
+import SearchSuggestions from './search-suggestions'
+import { useState } from 'react'
 
 const SearchBox = () => {
-  return (
-    <>
-      <SearchBoxMobile />
-      <SearchBoxDesktop />
-    </>
-  );
-};
+    const [text, setText] = useState<string>('')
+    return (
+        <>
+            <SearchBoxMobile text={text} setText={setText} />
+            <SearchBoxDesktop text={text} setText={setText} />
+        </>
+    )
+}
 
-export default SearchBox;
+export default SearchBox
 
-const SearchBoxMobile = () => {
-  const { setSearchBoxOpen, searchBoxOpen } = useGlobalContext();
-  return (
-    <div>
-      <CiSearch
-        fontSize={20}
-        className="cursor-pointer md:hidden"
-        onClick={() => setSearchBoxOpen(true)}
-      />
-      {searchBoxOpen && (
-        <section className="absolute md:hidden p-xs left-0 top-0 w-full bg-white">
-          <div className="flex items-center  border-sm border-gray-300  rounded-sm">
-            <LiaTimesSolid
-              fontSize={20}
-              className="cursor-pointer"
-              onClick={() => setSearchBoxOpen(false)}
+const SearchBoxMobile = ({
+    text,
+    setText,
+}: {
+    text: string
+    setText: (props: string) => void
+}) => {
+    const { setSearchBoxOpen, searchBoxOpen, searchText } = useGlobalContext()
+
+    return (
+        <div className="search">
+            <CiSearch
+                fontSize={25}
+                className="cursor-pointer md:hidden search"
+                onClick={() => setSearchBoxOpen(true)}
             />
-            <div className="w-full">
-              <Input />
-            </div>
-          </div>
-        </section>
-      )}
-    </div>
-  );
-};
+            {searchBoxOpen && (
+                <section className="absolute md:hidden  search p-xs left-0 top-0 w-full bg-white">
+                    <div className=" px-1 flex search items-center  border-sm border-gray-300  rounded-sm">
+                        <LiaTimesSolid
+                            fontSize={20}
+                            className="cursor-pointer"
+                            onClick={() => {
+                                setSearchBoxOpen(false)
+                                setText('')
+                            }}
+                        />
+                        <div className="w-full">
+                            <Input text={text} setText={setText} />
+                        </div>
+                    </div>
+                </section>
+            )}
+            {searchBoxOpen && searchText && (
+                <div className="md:hidden">
+                    <SearchSuggestions />
+                </div>
+            )}
+        </div>
+    )
+}
 
-const SearchBoxDesktop = () => {
-  return (
-    <div className="border-sm hidden md:block">
-      <Input />
-    </div>
-  );
-};
+const SearchBoxDesktop = ({
+    text,
+    setText,
+}: {
+    text: string
+    setText: (props: string) => void
+}) => {
+    const { searchText } = useGlobalContext()
+    return (
+        <div className="border-sm search hidden md:block">
+            <Input text={text} setText={setText} />
+            {searchText && <SearchSuggestions />}
+        </div>
+    )
+}

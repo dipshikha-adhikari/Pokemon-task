@@ -1,7 +1,8 @@
 ---
 import ContentLayout from "../components/layout/content-layout";
-import Navbar from '../components/layout/navbar';
-import PokemonList from "../components/pokemon/pokemon-list.astro";
+import Navbar from '../components/layout/navbar.tsx';
+import { AppProvider } from "../context/app-context";
+import PokemonList from "../components/pokemon/pokemon-list";
 ---
 
 <html lang="en">
@@ -16,9 +17,12 @@ import PokemonList from "../components/pokemon/pokemon-list.astro";
     <link rel="icon" href="/favicon.ico" />
   </head>
   <body>
-    <Navbar client:load/>
+      <Navbar client:load/>
    <ContentLayout>
-      <PokemonList />
+        <AppProvider>
+           <PokemonList client:load/>
+      </AppProvider>
    </ContentLayout>
+   
   </body>
 </html>

@@ -1,20 +1,36 @@
+import { useEffect } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { useGlobalContext } from '../../context/app-context'
+import { useDebounce } from '../../hooks/use-debounce'
 
-const Input = () => {
-    const { setSearchBoxOpen } = useGlobalContext()
+const Input = ({
+    text,
+    setText,
+}: {
+    text: string
+    setText: (props: string) => void
+}) => {
+    const { setSearchBoxOpen, setSearchText } = useGlobalContext()
+    const { debouncedText } = useDebounce(text, 300)
+
+    useEffect(() => {
+        setSearchText(debouncedText)
+    }, [debouncedText])
+
     return (
-        <div className="flex  items-center">
+        <div className="flex relative search items-center">
             <input
                 type="text"
                 placeholder="Search"
                 name=""
                 id=""
-                className="p-xs outline-none  w-full"
+                value={text}
+                className="p-xs outline-none  search w-full"
+                onChange={(e) => setText(e.target.value)}
             />{' '}
             <CiSearch
-                fontSize={30}
-                className="cursor-pointer "
+                fontSize={20}
+                className="cursor-pointer search  "
                 onClick={() => setSearchBoxOpen(true)}
             />
         </div>

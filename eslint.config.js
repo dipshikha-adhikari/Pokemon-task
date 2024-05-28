@@ -6,4 +6,7 @@ export default [
     { languageOptions: { globals: globals.browser } },
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
+    {
+        ignores: ['.astro', '.eslintrc.cjs', 'src/env.d.ts'],
+    },
 ]
