@@ -1,28 +1,68 @@
 ---
-import ContentLayout from "../components/layout/content-layout";
-import Navbar from '../components/layout/navbar.tsx';
-import { AppProvider } from "../context/app-context";
-import PokemonList from "../components/pokemon/pokemon-list";
+import ContentLayout from '../components/layout/content-layout'
+import Navbar from '../components/layout/navbar.tsx'
+import { AppProvider } from '../context/app-context'
+import PokemonList from '../components/pokemon/pokemon-list'
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="A list of Pokémon with their names, images, and types"
-    />
-    <title>Pokémon List</title>
-    <link rel="icon" href="../../public/favicon.svg" />
-  </head>
-  <body>
-      <Navbar client:load/>
-   <ContentLayout>
-        <AppProvider>
-           <PokemonList client:load/>
-      </AppProvider>
-   </ContentLayout>
-   
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="A comprehensive list of Pokémon with their names, images, and types. Find your favorite Pokémon and learn more about their unique characteristics."
+        />
+        <meta
+            name="keywords"
+            content="Pokémon, Pokémon List, Pokémon Types, Pokémon Images"
+        />
+        <meta property="og:title" content="Pokémon List" />
+        <meta
+            property="og:description"
+            content="A comprehensive list of Pokémon with their names, images, and types."
+        />
+        <meta property="og:url" content="https://mypokemontask.netlify.app/" />
+        <title>Pokémon List</title>
+        <link rel="icon" href="../../public/favicon.svg" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Pokémon List",
+                "description": "A comprehensive list of Pokémon with their names, images, and types.",
+                "url": "https://mypokemontask.netlify.app/",
+                "image": "https://yourwebsite.com/path/to/your-image.jpg",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Pokemon",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "image"
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <body>
+            <header>
+                <Navbar client:load />
+            </header>
+            <main>
+                <ContentLayout>
+                    <AppProvider>
+                        <PokemonList client:load />
+                    </AppProvider>
+                </ContentLayout>
+            </main>
+        </body>
+    </body>
 </html>
+
+<style>
+    header {
+        position: sticky;
+        top: 0;
+    }
+</style>

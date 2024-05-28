@@ -7,6 +7,6 @@ export default [
     pluginJs.configs.recommended,
     ...tseslint.configs.recommended,
     {
-        ignores: ['.astro', '.eslintrc.cjs', 'src/env.d.ts'],
+        ignores: ['.astro', '.eslintrc.cjs', 'src/env.d.ts', '**/*.test.tsx'],
     },
 ]

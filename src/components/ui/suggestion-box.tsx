@@ -14,7 +14,7 @@ const SuggestionBox = ({
     const { searchText, setSearchText, setSearchBoxOpen } = useGlobalContext()
 
     useEffect(() => {
-        function handleClick(e: MouseEvent) {
+        function handleClickOutside(e: MouseEvent) {
             if (!searchText) return
             if ((e.target as Element).classList.contains('search')) return
             if (ref.current) {
@@ -25,11 +25,10 @@ const SuggestionBox = ({
             }
         }
 
-        document.addEventListener('click', (e) => handleClick(e))
+        document.addEventListener('click', handleClickOutside)
 
-        return () =>
-            document.removeEventListener('click', (e) => handleClick(e))
-    }, [ref, searchText])
+        return () => document.removeEventListener('click', handleClickOutside)
+    }, [ref, searchText, setSearchBoxOpen, setSearchText])
 
     return (
         <section className="absolute left-0 top-[10vh]  w-full">

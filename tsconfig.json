@@ -14,6 +14,7 @@
         "verbatimModuleSyntax": false,
         "noFallthroughCasesInSwitch": true,
         "jsx": "react-jsx",
+        "types": ["jest", "node", "@testing-library/jest-dom"],
 
         "plugins": [
             {
@@ -21,6 +22,6 @@
             }
         ]
     },
-    "include": ["src", "types"],
+    "include": ["src", "types", "jest.config.js"],
     "extends": "astro/tsconfigs/base"
 }
