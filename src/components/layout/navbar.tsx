@@ -6,7 +6,7 @@ import ContentLayout from './content-layout'
 const Navbar = () => {
     return (
         <AppProvider>
-            <nav className="bg-white z-50 shadow-sm relative py-sm bg-primary top-0">
+            <nav className="bg-white z-50 shadow-sm relative h-[8vh] sm:h-[10vh] ">
                 <ContentLayout
                     style={{
                         display: 'flex ',
