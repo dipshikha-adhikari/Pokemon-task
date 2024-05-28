@@ -3,7 +3,7 @@ name: Test
 on:
   push:
     branches:
-      - main  # adjust this to your main branch name
+      - master  # adjust this to your main branch name
 
 jobs:
   test:
