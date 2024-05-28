@@ -24,7 +24,6 @@ module.exports = {
         "prefer-const": "error",
         "@typescript-eslint/no-explicit-any": "off",
         "no-undef": "off",
-        "@typescript-eslint / no - explicit - any": "off",
         "@typescript-eslint/triple-slash-reference": "off"
     },
 

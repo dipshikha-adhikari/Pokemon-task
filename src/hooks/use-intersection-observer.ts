@@ -7,6 +7,8 @@ export const useIntersectionObserver = (ref: RefObject<HTMLDivElement>) => {
         const observer = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting) {
                 setIsInView(true)
+            } else {
+                setIsInView(false)
             }
         })
 
@@ -19,7 +21,7 @@ export const useIntersectionObserver = (ref: RefObject<HTMLDivElement>) => {
                 observer.unobserve(ref.current)
             }
         }
-    }, [])
+    }, [ref])
 
     return { isInView }
 }
